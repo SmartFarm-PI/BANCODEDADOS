@@ -9,38 +9,17 @@ CREATE TABLE empresa (
     nome_fantasia VARCHAR(50) NOT NULL,
     telefone varchar (15) null,
     email varchar (50),
-    qtd_estufas INT NOT NULL
+    qtd_estufas INT NOT NULL,
+    tokenEmpresa varchar (9) NOT NULL,
+    endereco varchar (150)
 );
 
-insert into empresa(CNPJ, razao_social, nome_fantasia, telefone, email, qtd_estufas)
-values (12345678000190, 'AgroTech Soluções Agricolas Plantio Ltda.', 'AgroTech', '11967314567', 'comunicacoesagrotech@gmail.com', 1),
-		(98345678000140, 'Gestão Verde Agro SA', 'GV Agro', '11947310967', 'vendasgvagro@gmail.com', 1),
-        (09871678000140, 'Agri Futura Planções Ltda.','Agri Futura', '11913560989', 'financeiroagriplantacoes@gmail.com', 1);
+insert into empresa(CNPJ, razao_social, nome_fantasia, telefone, email, qtd_estufas, token, endereco)
+values (12345678000190, 'AgroTech Soluções Agricolas Plantio Ltda.', 'AgroTech', '11967314567', 'comunicacoesagrotech@gmail.com', 1, 'FGY7637', 'Rua 01, 234'),
+		(98345678000140, 'Gestão Verde Agro SA', 'GV Agro', '11947310967', 'vendasgvagro@gmail.com', 1, '9FGF65', 'Rua 45, 3445'),
+        (09871678000140, 'Agri Futura Planções Ltda.','Agri Futura', '11913560989', 'financeiroagriplantacoes@gmail.com', 1, 'GR73482', 'Rua 2, 567');
         
 select * from empresa;
-
-
-CREATE TABLE endereco (
-    idEndereco INT PRIMARY KEY AUTO_INCREMENT,
-    logradouro VARCHAR(60) NOT NULL,
-    tipo VARCHAR(10) CHECK (tipo IN ('rua' , 'avenida', 'alemeda', 'travessa', 'estrada', 'fazenda')),
-    numero INT NOT NULL,
-    complemento VARCHAR(25),
-    bairro VARCHAR(20) NOT NULL,
-    cidade VARCHAR(30) NOT NULL,
-    UF CHAR(2) NOT null,
-    fk_empresa int
-); 
-
-alter table endereco add foreign key (fk_empresa) references empresa (idEmpresa);
-
-insert into endereco(logradouro, tipo, numero, complemento, bairro, cidade, UF, fk_empresa)
-values ('Ragueb Choffi', 'avenida', 256, null, 'Parque das Flores', 'São Paulo', 'SP', 1);
-insert into endereco(logradouro, tipo, numero, complemento, bairro, cidade, UF, fk_empresa)
-values  ('Altos Caminhos', 'estrada', 132, null, 'Lapa', 'Rio de Janeiro', 'RJ', 2),
-		('Manoel Garcia', 'rua', 1832, null, 'Campo Limpo', 'Ribeirão Preto', 'SP', 3);
-
-select * from endereco;
 
 
 CREATE TABLE usuario (
@@ -110,6 +89,5 @@ values (22.2, 75, 100000.00, 500, 2000),
         (21.2, 75, 100000.00, 502, 2002);
     
 select * from leitura; 
-
 
 
